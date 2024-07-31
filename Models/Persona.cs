@@ -10,9 +10,9 @@ public class Persona
     public string Nombre { get; set; }
     public string Apellido { get; set; }
     public string NumeroDeIdentificacion { get; set; }
-    public DateTime FechaNacimiento { get; set; }
+    public DateOnly FechaNacimiento { get; set; }
 
-    public Persona(string nombre, string apellido, string numeroDeIdentificacion, DateTime fechanacimiento)
+    public Persona(string nombre, string apellido, string numeroDeIdentificacion, DateOnly fechanacimiento)
     {
         Id = Guid.NewGuid();
         Nombre = nombre;
