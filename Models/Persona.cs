@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace W5_Ejercicios.Models;
-public class Persona
+public abstract class Persona
 {
     private Guid Id { get; set; }
     public string Nombre { get; set; }
@@ -25,4 +25,6 @@ public class Persona
         var edad = DateTime.Now.Year - FechaNacimiento.Year;
         return Convert.ToByte(edad);
     }
+
+    public abstract void MostrarInfomacion();   
 }

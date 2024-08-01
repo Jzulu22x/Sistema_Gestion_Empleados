@@ -11,6 +11,7 @@ public static class Empresa
     public static string Nombre { get; set; } = "Empresa XYZ";
     public static string Direccion { get; set; } = "Calle 123, Casa 456";
     public static List<Empleado> ListaEmpleados { get; set; } = new List<Empleado>();
+    public static List<Cliente> ListaClientes { get; set; } = new List<Cliente>();
 
     public static void AgregarEmpleado(Empleado empleado)
     {
@@ -89,6 +90,43 @@ public static class Empresa
         }
         else {
             Console.WriteLine($"No hay empleados con la posición {posicion}.");
+        }
+    }
+
+    //Creacion metodos de la clase cliente
+     public static void AgregarCliente(Cliente cliente)
+    {
+        ListaClientes.Add(cliente);
+        Console.WriteLine($"Cliente {cliente.Nombre} {cliente.Apellido} agregado exitosamente.");
+    }
+
+    public static void EliminarCliente(string NumeroDeIdentificacion)
+    {
+        
+        if (Convert.ToBoolean(ListaClientes.Any(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
+        {
+            var clienteAEliminar = ListaClientes.FirstOrDefault(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion);
+            ListaClientes.Remove(clienteAEliminar);
+            Console.WriteLine($"Cliente con número de identificación {NumeroDeIdentificacion} eliminado exitosamente.");
+        }
+        else{
+            Console.WriteLine($"No se encontró un cliente con el número de identificación {NumeroDeIdentificacion}.");
+        }
+    }
+
+    public static void MostrarTodosLosClientes()
+    {
+        if (ListaClientes.Count == 0)
+        {
+            Console.WriteLine("No hay empleados registrados.");
+        }
+        else
+        {
+            Console.WriteLine("Empleados registrados:");
+            foreach (var cliente in ListaClientes)
+            {
+                cliente.MostrarInfomacion();
+            }
         }
     }
 }

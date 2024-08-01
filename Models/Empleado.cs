@@ -19,7 +19,7 @@ public class Empleado : Persona
  {
     return Salario = Salario * 0.10;
  }
- public void MostrarInfomacion()
+ public override void MostrarInfomacion()
  {
     Console.WriteLine($"Nombre: {Nombre} {Apellido}");
     Console.WriteLine($"Edad: {CalcularEdad()} años");
