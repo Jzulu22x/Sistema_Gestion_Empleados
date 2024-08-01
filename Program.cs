@@ -24,6 +24,28 @@ Empresa.AgregarEmpleado(empleado8);
 Empresa.AgregarEmpleado(empleado9);
 Empresa.AgregarEmpleado(empleado10);
 
+Cliente cliente1 = new Cliente("Juan", "Pérez", "ID001", new DateOnly(1990, 1, 15), "juan.perez@example.com", "123-456-7890");
+Cliente cliente2 = new Cliente("María", "García", "ID002", new DateOnly(1985, 5, 23), "maria.garcia@example.com", "123-456-7891");
+Cliente cliente3 = new Cliente("Elena", "Ramírez", "ID010", new DateOnly(1994, 6, 25), "elena.ramirez@example.com", "123-456-7899");
+Cliente cliente4 = new Cliente("Carlos", "Martínez", "ID003", new DateOnly(1992, 3, 10), "carlos.martinez@example.com", "123-456-7892");
+Cliente cliente5 = new Cliente("Ana", "López", "ID004", new DateOnly(1988, 7, 30), "ana.lopez@example.com", "123-456-7893");
+Cliente cliente6 = new Cliente("Luis", "González", "ID005", new DateOnly(1995, 9, 5), "luis.gonzalez@example.com", "123-456-7894");
+Cliente cliente7 = new Cliente("Laura", "Hernández", "ID006", new DateOnly(1993, 12, 12), "laura.hernandez@example.com", "123-456-7895");
+Cliente cliente8 = new Cliente("Miguel", "Rodríguez", "ID007", new DateOnly(1980, 11, 18), "miguel.rodriguez@example.com", "123-456-7896");
+Cliente cliente9 = new Cliente("Sara", "Fernández", "ID008", new DateOnly(1991, 4, 22), "sara.fernandez@example.com", "123-456-7897");
+Cliente cliente10 = new Cliente("David", "Sánchez", "ID009", new DateOnly(1987, 8, 16), "david.sanchez@example.com", "123-456-7898");
+
+Empresa.AgregarCliente(cliente1);
+Empresa.AgregarCliente(cliente2);
+Empresa.AgregarCliente(cliente3);
+Empresa.AgregarCliente(cliente4);
+Empresa.AgregarCliente(cliente5);
+Empresa.AgregarCliente(cliente6);
+Empresa.AgregarCliente(cliente7);
+Empresa.AgregarCliente(cliente8);
+Empresa.AgregarCliente(cliente9);
+Empresa.AgregarCliente(cliente10);
+
 while (run)
 {
     Console.Clear();
@@ -34,7 +56,10 @@ while (run)
     Console.WriteLine("5. Buscar empleado");
     Console.WriteLine("6. Mostrar empleados por posición");
     Console.WriteLine("7. Actualizar empleado");
-    Console.WriteLine("8. Salir");
+    Console.WriteLine("8. Agregar Cliente");
+    Console.WriteLine("9. Eliminar Cliente");
+    Console.WriteLine("10. Mostrar Clientes");
+    Console.WriteLine("11. Salir");
     Console.WriteLine();
 
     int opcion;
@@ -47,7 +72,7 @@ while (run)
     switch (opcion)
     {
         case 1:
-            Console.WriteLine("Agregar Empleado.");
+            Console.WriteLine("Agregempleadoar Empleado.");
             Console.WriteLine();
 
             Console.WriteLine("Ingresa el nombre del empleado.");
@@ -293,7 +318,102 @@ while (run)
             Console.ReadKey();
             break;
 
+
         case 8:
+            Console.WriteLine("Agregar Cliente");
+            Console.WriteLine();
+            Console.WriteLine("Ingresa el nombre del cliente.");
+            string nombreCliente = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(nombreCliente))
+            {
+                Console.WriteLine("El nombre no puede estar vacío.");
+                Console.WriteLine();
+                Console.WriteLine("Presiona culquier tecla para continuar");
+                Console.ReadKey();
+                break;
+            }
+            Console.WriteLine("Ingresa el apellido del cliente.");
+            string apellidoCliente = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(apellidoCliente))
+            {
+                Console.WriteLine("El apellido no puede estar vacío.");
+                Console.WriteLine();
+                Console.WriteLine("Presiona culquier tecla para continuar");
+                Console.ReadKey();
+                break;
+            }
+            Console.WriteLine("Ingresa el número de identificación del cliente.");
+            string numeroDeIdentificacionCliente = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(numeroDeIdentificacionCliente))
+            {
+                Console.WriteLine("El número de identificación no puede estar vacío.");
+                Console.WriteLine();
+                Console.WriteLine("Presiona culquier tecla para continuar");
+                Console.ReadKey();
+                break;
+            }
+            Console.WriteLine("Ingresa la fecha de nacimiento del cliente");
+            DateOnly fechaNacimientoCliente;
+            if (!DateOnly.TryParse(Console.ReadLine(), out fechaNacimientoCliente))
+            {
+                Console.WriteLine("La fecha de nacimiento ingresada no es válida.");
+                Console.WriteLine();
+                Console.WriteLine("Presiona culquier tecla para continuar");
+                Console.ReadKey();
+                break;
+            }
+
+            Console.WriteLine("Ingresa el Email del cliente");
+            string emailCliente = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(emailCliente))
+            {
+                Console.WriteLine("El Email no puede estar vacío.");
+                Console.WriteLine();
+                Console.WriteLine("Presiona culquier tecla para continuar");
+                Console.ReadKey();
+                break;
+            }
+
+            Console.WriteLine("Ingresa el Teléfono del cliente");
+            string telefonoCliente = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(telefonoCliente))
+            {
+                Console.WriteLine("El Teléfono no puede estar vacío.");
+                Console.WriteLine();
+                Console.WriteLine("Presiona culquier tecla para continuar");
+                Console.ReadKey();
+                break;
+            }
+
+            var nuevoCliente = new Cliente(nombreCliente, apellidoCliente, numeroDeIdentificacionCliente, fechaNacimientoCliente, emailCliente, telefonoCliente);
+            Empresa.AgregarCliente(nuevoCliente);
+
+            break;
+
+        case 9:
+            Console.WriteLine("Eliminar Cliente");
+            Console.WriteLine();
+            Console.WriteLine("Ingresa el número de identificación del cliente a eliminar.");
+            string numeroDeIdentificacionAEliminarEmpleado = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(numeroDeIdentificacionAEliminarEmpleado))
+            {
+                Console.WriteLine("El número de identificación no puede estar vacío.");
+                Console.WriteLine();
+                Console.WriteLine("Presiona culquier tecla para continuar");
+                Console.ReadKey();
+                break;
+            }
+            Empresa.EliminarCliente(numeroDeIdentificacionAEliminarEmpleado);
+            
+            break;
+
+        case 10:
+            Console.WriteLine("Mostrar Clientes");
+            Console.WriteLine();
+            Empresa.MostrarTodosLosClientes();
+            break;
+
+        case 11:
             run = false;
             Console.WriteLine("Gracias por utilizar el gestor de empleados.");
             break;

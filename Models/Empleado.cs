@@ -21,12 +21,10 @@ public class Empleado : Persona
  }
  public override void MostrarInfomacion()
  {
-    Console.WriteLine($"Nombre: {Nombre} {Apellido}");
-    Console.WriteLine($"Edad: {CalcularEdad()} años");
-    Console.WriteLine($"Número de identificación: {NumeroDeIdentificacion}");
-    Console.WriteLine($"Fecha de nacimiento: {FechaNacimiento:dd/MM/yyyy}");
-    Console.WriteLine($"Posición: {Posicion}");
-    Console.WriteLine($"Salario mas bonificacion: ${CalcularBonificacion()}");
-    Console.WriteLine("----------------------------------------");
+   Console.WriteLine($"Información del Empleado:");
+   base.MostrarInfomacion();
+   Console.WriteLine($"Posición: {Posicion}");
+   Console.WriteLine($"Salario mas bonificacion: ${CalcularBonificacion()}");
+   Console.WriteLine("----------------------------------------");
  }
 }

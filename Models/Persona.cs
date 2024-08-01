@@ -26,5 +26,13 @@ public abstract class Persona
         return Convert.ToByte(edad);
     }
 
-    public abstract void MostrarInfomacion();   
+    public virtual void MostrarInfomacion()
+    {
+        Console.WriteLine($"Id: {Id}");
+        Console.WriteLine($"Nombre: {Nombre}");
+        Console.WriteLine($"Apellido: {Apellido}");
+        Console.WriteLine($"Número de Identificación: {NumeroDeIdentificacion}");
+        Console.WriteLine($"Fecha de Nacimiento: {FechaNacimiento.ToShortDateString()}");
+        Console.WriteLine($"Edad: {CalcularEdad()} años");
+    }  
 }

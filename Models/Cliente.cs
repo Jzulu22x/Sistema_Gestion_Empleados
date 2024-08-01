@@ -18,11 +18,7 @@ public class Cliente : Persona
     public override void MostrarInfomacion()
     {
         Console.WriteLine($"Información del Cliente:");
-        Console.WriteLine($"Nombre: {Nombre}");
-        Console.WriteLine($"Apellido: {Apellido}");
-        Console.WriteLine($"Número de Identificación: {NumeroDeIdentificacion}");
-        Console.WriteLine($"Fecha de Nacimiento: {FechaNacimiento.ToShortDateString()}");
-        Console.WriteLine($"Edad: {CalcularEdad()} años");
+        base.MostrarInfomacion();
         Console.WriteLine($"Email: {Email}");
         Console.WriteLine($"Teléfono: {Telefono}");
         Console.WriteLine("----------------------------------------");
