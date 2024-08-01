@@ -21,7 +21,7 @@ public static class Empresa
     public static void EliminarEmpleado(string NumeroDeIdentificacion)
     {
         
-        if (Convert.ToBoolean(ListaEmpleados.Where(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
+        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
         {
             var empleadoAEliminar = ListaEmpleados.FirstOrDefault(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion);
             ListaEmpleados.Remove(empleadoAEliminar);
@@ -50,7 +50,7 @@ public static class Empresa
 
     public static void ActualizarEmpleado(string NumeroDeIdentificacion, Empleado empleado)
     {
-        if (Convert.ToBoolean(ListaEmpleados.Where(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
+        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
         {
             var empleadoAEliminar = ListaEmpleados.FirstOrDefault(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion);
             ListaEmpleados.Remove(empleadoAEliminar);
@@ -65,7 +65,7 @@ public static class Empresa
 
     public static void BuscarEmpleado(string NumeroDeIdentificacion)
     {
-        if (Convert.ToBoolean(ListaEmpleados.Where(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
+        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
         {
             var empleadoEncontrado = ListaEmpleados.FirstOrDefault(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion);
             empleadoEncontrado.MostrarInfomacion();
@@ -78,9 +78,9 @@ public static class Empresa
 
     public static void MostrarEmpleadosPorCargo(string posicion)
     {
-        if(Convert.ToBoolean(ListaEmpleados.Where(p => p.Posicion == posicion)))
+        if(Convert.ToBoolean(ListaEmpleados.Any(p => p.Posicion == posicion)))
         {
-            var listaPosiciones = ListaEmpleados.Where(p => p.Posicion == posicion).ToList();
+            var listaPosiciones = ListaEmpleados.Where(p => p.Posicion.Equals(posicion, StringComparison.OrdinalIgnoreCase)).ToList();
             Console.WriteLine($"Empleados con la posición {posicion}:");
             foreach (var empleado in listaPosiciones)
             {

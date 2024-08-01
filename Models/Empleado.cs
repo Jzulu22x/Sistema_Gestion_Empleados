@@ -26,7 +26,7 @@ public class Empleado : Persona
     Console.WriteLine($"Número de identificación: {NumeroDeIdentificacion}");
     Console.WriteLine($"Fecha de nacimiento: {FechaNacimiento:dd/MM/yyyy}");
     Console.WriteLine($"Posición: {Posicion}");
-    Console.WriteLine($"Salario mas bonificacion: ${Salario}");
+    Console.WriteLine($"Salario mas bonificacion: ${CalcularBonificacion()}");
     Console.WriteLine("----------------------------------------");
  }
 }
