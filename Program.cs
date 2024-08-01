@@ -130,7 +130,13 @@ while (run)
 
             var empleadoAgregar = new Empleado(nombre, apellido, numero, fechaNacimiento, posicion, salario);
             Empresa.AgregarEmpleado(empleadoAgregar);
-ToLower()
+
+            Console.WriteLine();
+            Console.WriteLine("Presiona culquier tecla para continuar");
+            Console.ReadKey();
+            break;
+
+        case 2:
             Console.WriteLine("Eliminar Empleado.");
             Console.WriteLine();
             Console.WriteLine("Ingresa el número de identificación del empleado a eliminar.");
