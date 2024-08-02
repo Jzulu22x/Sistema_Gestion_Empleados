@@ -15,7 +15,7 @@ public class Cliente : Persona
         Telefono = telefono;
     }
 
-    public override void MostrarInfomacion()
+    public override void MostrarInformacion()
     {
         Console.WriteLine($"Información del Cliente:");
         Console.WriteLine($"Nombre: {Nombre}");
