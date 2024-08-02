@@ -6,25 +6,31 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace W5_Ejercicios.Models;
-public static class Empresa
+public  class Empresa
 {
-    public static string Nombre { get; set; } = "Empresa XYZ";
-    public static string Direccion { get; set; } = "Calle 123, Casa 456";
+    public string Nombre { get; set; }
+    public string Direccion { get; set; } 
     public static List<Empleado> ListaEmpleados { get; set; } = new List<Empleado>();
     public static List<Cliente> ListaClientes { get; set; } = new List<Cliente>();
+
+    public Empresa(string nombreEmpresa, string direccion)
+    {
+        Nombre = nombreEmpresa;   
+        Direccion = direccion;
+    }
 
     public static void AgregarEmpleado(Empleado empleado)
     {
         ListaEmpleados.Add(empleado);
-        Console.WriteLine($"Empleado {empleado.Nombre} {empleado.Apellido} agregado exitosamente.");
+        Console.WriteLine($"Empleado agregado exitosamente.");
     }
 
     public static void EliminarEmpleado(string NumeroDeIdentificacion)
     {
         
-        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
+        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.ObtenerNumeroIdentificacion() == NumeroDeIdentificacion)))
         {
-            var empleadoAEliminar = ListaEmpleados.FirstOrDefault(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion);
+            var empleadoAEliminar = ListaEmpleados.FirstOrDefault(e => e.ObtenerNumeroIdentificacion() == NumeroDeIdentificacion);
             ListaEmpleados.Remove(empleadoAEliminar);
             Console.WriteLine($"Empleado con número de identificación {NumeroDeIdentificacion} eliminado exitosamente.");
         }
@@ -44,16 +50,16 @@ public static class Empresa
             Console.WriteLine("Empleados registrados:");
             foreach (var empleado in ListaEmpleados)
             {
-                empleado.MostrarInfomacion();
+                empleado.MostrarInformacion();
             }
         }
     }
 
     public static void ActualizarEmpleado(string NumeroDeIdentificacion, Empleado empleado)
     {
-        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
+        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.ObtenerNumeroIdentificacion() == NumeroDeIdentificacion)))
         {
-            var empleadoAEliminar = ListaEmpleados.FirstOrDefault(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion);
+            var empleadoAEliminar = ListaEmpleados.FirstOrDefault(e => e.ObtenerNumeroIdentificacion() == NumeroDeIdentificacion);
             ListaEmpleados.Remove(empleadoAEliminar);
             ListaEmpleados.Add(empleado);
             Console.WriteLine($"Empleado con número de identificación {NumeroDeIdentificacion} actualizado exitosamente.");
@@ -66,10 +72,10 @@ public static class Empresa
 
     public static void BuscarEmpleado(string NumeroDeIdentificacion)
     {
-        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
+        if (Convert.ToBoolean(ListaEmpleados.Any(e => e.ObtenerNumeroIdentificacion() == NumeroDeIdentificacion)))
         {
-            var empleadoEncontrado = ListaEmpleados.FirstOrDefault(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion);
-            empleadoEncontrado.MostrarInfomacion();
+            var empleadoEncontrado = ListaEmpleados.FirstOrDefault(e => e.ObtenerNumeroIdentificacion() == NumeroDeIdentificacion);
+            empleadoEncontrado.MostrarInformacion();
         }
         else
         {
@@ -85,7 +91,7 @@ public static class Empresa
             Console.WriteLine($"Empleados con la posición {posicion}:");
             foreach (var empleado in listaPosiciones)
             {
-                empleado.MostrarInfomacion();
+                empleado.MostrarInformacion();
             }
         }
         else {
@@ -97,15 +103,15 @@ public static class Empresa
      public static void AgregarCliente(Cliente cliente)
     {
         ListaClientes.Add(cliente);
-        Console.WriteLine($"Cliente {cliente.Nombre} {cliente.Apellido} agregado exitosamente.");
+        Console.WriteLine($"Cliente agregado exitosamente.");
     }
 
     public static void EliminarCliente(string NumeroDeIdentificacion)
     {
         
-        if (Convert.ToBoolean(ListaClientes.Any(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion)))
+        if (Convert.ToBoolean(ListaClientes.Any(e => e.ObtenerNumeroIdentificacion() == NumeroDeIdentificacion)))
         {
-            var clienteAEliminar = ListaClientes.FirstOrDefault(e => e.NumeroDeIdentificacion == NumeroDeIdentificacion);
+            var clienteAEliminar = ListaClientes.FirstOrDefault(e => e.ObtenerNumeroIdentificacion() == NumeroDeIdentificacion);
             ListaClientes.Remove(clienteAEliminar);
             Console.WriteLine($"Cliente con número de identificación {NumeroDeIdentificacion} eliminado exitosamente.");
         }
@@ -125,8 +131,9 @@ public static class Empresa
             Console.WriteLine("Empleados registrados:");
             foreach (var cliente in ListaClientes)
             {
-                cliente.MostrarInfomacion();
+                cliente.MostrarInformacion();
             }
         }
+        Interfaz.MostrarPie("Se Mostro la info de los clientes");
     }
 }

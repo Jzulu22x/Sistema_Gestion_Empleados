@@ -15,10 +15,14 @@ public class Cliente : Persona
         Telefono = telefono;
     }
 
-    public override void MostrarInfomacion()
+    public override void MostrarInformacion()
     {
         Console.WriteLine($"Información del Cliente:");
-        base.MostrarInfomacion();
+        Console.WriteLine($"Nombre: {Nombre}");
+        Console.WriteLine($"Apellido: {Apellido}");
+        Console.WriteLine($"Número de Identificación: {NumeroDeIdentificacion}");
+        Console.WriteLine($"Fecha de Nacimiento: {FechaNacimiento.ToShortDateString()}");
+        Console.WriteLine($"Edad: {CalcularEdad()} años");
         Console.WriteLine($"Email: {Email}");
         Console.WriteLine($"Teléfono: {Telefono}");
         Console.WriteLine("----------------------------------------");

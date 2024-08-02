@@ -17,12 +17,16 @@ public class Empleado : Persona
 
  private double CalcularBonificacion()
  {
-    return Salario = Salario * 0.10;
+    return Salario *= 0.1;
  }
- public override void MostrarInfomacion()
+ public override void MostrarInformacion()
  {
+   Console.WriteLine("----------------------------------------");
    Console.WriteLine($"Información del Empleado:");
-   base.MostrarInfomacion();
+   Console.WriteLine($"Nombre: {Nombre} {Apellido}");
+   Console.WriteLine($"Edad: {CalcularEdad()} años");
+   Console.WriteLine($"Número de identificación: {NumeroDeIdentificacion}");
+   Console.WriteLine($"Fecha de nacimiento: {FechaNacimiento:dd/MM/yyyy}");
    Console.WriteLine($"Posición: {Posicion}");
    Console.WriteLine($"Salario mas bonificacion: ${CalcularBonificacion()}");
    Console.WriteLine("----------------------------------------");
